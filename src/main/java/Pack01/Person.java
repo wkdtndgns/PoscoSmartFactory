@@ -1,7 +1,7 @@
 package Pack01;
 
 
-class Person {
+public class Person {
 
   String id;
   Integer pw;

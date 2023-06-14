@@ -24,4 +24,17 @@
   <INPUT TYPE="number" NAME="pw" VALUE=23><br/>
   <INPUT TYPE="submit" VALUE="전송">
 </FORM>
+<br/>
+<a href="t12">링크12</a><br/>
+<a href="register/t13">링크13</a><br/>
+<a href="register/t14">링크14</a><br/>
+<a href="register/t15">링크15</a><br/>
+
+<FORM METHOD=POST action="/t16">
+  <INPUT TYPE="text" NAME="item[0]" VALUE="소나무"><br />
+  <INPUT TYPE="text" NAME="item[1]" VALUE="중나무"><br />
+  <INPUT TYPE="text" NAME="item[2]" VALUE="대나무"><br />
+  <INPUT TYPE="submit" VALUE="전송">
+</FORM>
+
 </body>
