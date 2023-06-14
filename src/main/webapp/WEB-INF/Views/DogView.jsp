@@ -11,15 +11,10 @@
   <title>Title</title>
 </head>
 <body>
-<%
-  //
-//  String name = (String) request.getAttribute("name");
-//  String age = (String) request.getAttribute("age");
-%>
-<h1>TigerView.jsp</h1>
+
+<h1>DogView.jsp</h1>
 <h1> ${name}</h1>
 <h1> ${age }</h1>
-<%--<h1><%= name%></h1><h1><%= age%></h1>--%>
 </body>
 </html>
 

@@ -9,4 +9,7 @@
   <mvc:view-resolvers>
     <mvc:jsp prefix="/WEB-INF/Views/"/>
   </mvc:view-resolvers>
+
+  <!--  추가 코드-->
+  <mvc:view-controller path="/t10" view-name="DogView"/>
 </beans>
