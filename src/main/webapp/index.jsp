@@ -18,7 +18,9 @@
 
       -->
 
-      <a href="t1">링크1</a><br/>
+      <a href="company/list">링크1</a><br/>
+      <a href="factory/list">링크1</a><br/>
+      <a href="material/list">링크1</a><br/>
     </div>
     <jsp:include page="include/footer.jsp"/>
   </div>
