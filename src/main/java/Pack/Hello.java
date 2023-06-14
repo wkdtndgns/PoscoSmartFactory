@@ -1,7 +1,7 @@
 package Pack;
 
-import data.DatabaseConfig;
-import data.DatabaseUtil;
+import data.Util.DatabaseConfig;
+import data.Util.DatabaseUtil;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import javax.sql.DataSource;

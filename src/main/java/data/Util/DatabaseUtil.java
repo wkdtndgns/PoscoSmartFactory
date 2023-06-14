@@ -1,4 +1,4 @@
-package data;
+package data.Util;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -20,9 +20,7 @@ public class DatabaseUtil {
         String password = "1234";
         jdbcTemplate.setDataSource(new DriverManagerDataSource(url, username, password));
         // 데이터베이스 연결
-
     }
-
     public List<String> getAllNames() {
         String sql = "SELECT name FROM table01";
         List<String> names = jdbcTemplate.queryForList(sql, String.class);

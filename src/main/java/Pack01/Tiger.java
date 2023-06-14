@@ -1,10 +1,8 @@
 package Pack01;
 
-import data.DatabaseConfig;
-import data.DatabaseUtil;
-import org.springframework.context.ApplicationContext;
+import data.Util.DatabaseConfig;
+import data.Util.DatabaseUtil;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

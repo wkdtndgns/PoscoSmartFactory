@@ -18,7 +18,7 @@
 
       -->
 
-      <a src="t1">링크1</a>
+      <a href="t1">링크1</a><br/>
     </div>
     <jsp:include page="include/footer.jsp"/>
   </div>

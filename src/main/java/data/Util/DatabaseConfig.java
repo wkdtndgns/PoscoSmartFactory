@@ -1,4 +1,4 @@
-package data;
+package data.Util;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
