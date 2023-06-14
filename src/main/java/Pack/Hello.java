@@ -1,16 +1,23 @@
 package Pack;
 
-import data.DatabaseManager;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import data.DatabaseConfig;
+import data.DatabaseUtil;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import javax.sql.DataSource;
+import java.util.List;
 
 public class Hello {
 
   public static void main(String[] args) {
+    AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(DatabaseConfig.class);
 
-    ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
-    DatabaseManager databaseManager = new DatabaseManager();
-    databaseManager.executeQuery();
+    // Retrieve the DataSource bean from the context
+    DataSource dataSource = context.getBean(DataSource.class);
+
+    DatabaseUtil databaseUtil = new DatabaseUtil(dataSource);
+    databaseUtil.connect();
+    List<String> names = databaseUtil.getAllNames();
     System.out.println("dd");
   }
 }
