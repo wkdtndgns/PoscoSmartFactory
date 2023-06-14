@@ -15,7 +15,10 @@
       <jsp:include page="include/toolbar.jsp"/>
       <!-- Begin Page Content
         페이지수정할때 요기만
+
       -->
+
+      <a src="t1">링크1</a>
     </div>
     <jsp:include page="include/footer.jsp"/>
   </div>
