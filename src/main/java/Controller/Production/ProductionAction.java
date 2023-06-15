@@ -21,7 +21,6 @@ public class ProductionAction {
 
   @PostMapping("updateStatus")
   public boolean updateStatus(@RequestBody ProductionStatusUpdateRequest request) {
-    System.out.println(request);
     productionService.updateProductionStatus(request);
     return true;
   }

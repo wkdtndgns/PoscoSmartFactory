@@ -18,4 +18,5 @@ public class DatabaseUtil {
     public static DataSource getDataSource() {
         return getJdbcTemplate().getDataSource();
     }
+
 }

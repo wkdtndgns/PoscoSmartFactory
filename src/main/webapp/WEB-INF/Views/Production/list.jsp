@@ -102,7 +102,9 @@
                 <tr>
                   <th><input type="checkbox" class="allChk"/></th>
                   <th>주문번호</th>
-                  <th>공장이름</th>
+                  <th>공장</th>
+                  <th>기업</th>
+                  <th>재료</th>
                   <th>수량</th>
                   <th>시작일</th>
                   <th>예상 완료일</th>
@@ -120,6 +122,10 @@
                   <td><%= p.getOrderNo() %>
                   </td>
                   <td><%= p.getFactoryName() %>
+                  </td>
+                  <td><%= p.getCompanyName() %>
+                  </td>
+                  <td><%= p.getMaterialName() %>
                   </td>
                   <td><%= p.getQty() %>
                   </td>

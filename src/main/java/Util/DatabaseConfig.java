@@ -1,7 +1,10 @@
 package Util;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import javax.sql.DataSource;
+import org.springframework.transaction.PlatformTransactionManager;
+
 public class DatabaseConfig {
     @Bean
     protected DataSource dataSource() {
@@ -11,5 +14,10 @@ public class DatabaseConfig {
         dataSource.setUsername("root");
         dataSource.setPassword("1234");
         return dataSource;
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager(DataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
     }
 }

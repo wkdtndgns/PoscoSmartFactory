@@ -31,4 +31,17 @@ public class FactoryDao {
     String sql = String.format("SELECT * from %s", FACTORYTABLE);
     return jdbcTemplate.query(sql, FACTORY_ROW_MAPPER);
   }
+
+
+  public void updateCathodeProduction(int factoryId, int cathodeProduction) {
+    System.out.println(cathodeProduction);
+    System.out.println(factoryId);
+    String sql = String.format("UPDATE %s SET cathode_production = ? WHERE id = ?", FACTORYTABLE);
+    jdbcTemplate.update(sql, cathodeProduction, factoryId);
+  }
+
+  public void updateAnodeProduction(int factoryId, int anodeProduction) {
+    String sql = String.format("UPDATE %s SET anode_production = ? WHERE id = ?", FACTORYTABLE);
+    jdbcTemplate.update(sql, anodeProduction, factoryId);
+  }
 }

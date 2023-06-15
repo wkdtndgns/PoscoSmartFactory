@@ -20,7 +20,7 @@ import java.sql.Date;
 public class OrderDao {
 
   private final JdbcTemplate jdbcTemplate;
-  private static final String ORDERTABLE = "t_orders";  // Assuming 't_orders' is the table name
+  private static final String ORDERTABLE = "t_orders";
 
   public OrderDao() {
     this.jdbcTemplate = DatabaseUtil.getJdbcTemplate();
@@ -52,6 +52,28 @@ public class OrderDao {
     return jdbcTemplate.query(sql, ORDER_ROW_MAPPER);
   }
 
+  public List<Order> findByIds(List<Integer> orderIds) {
+    String inSql = orderIds.stream()
+        .map(String::valueOf)
+        .collect(Collectors.joining(","));
+
+    String sql = String.format("select tord.*, tf.cathode_production, tf.anode_production\n"
+        + "from t_orders as tord\n"
+        + "         left join t_factories tf on tord.factory_id = tf.id\n"
+        + "          WHERE tord.id IN (%s)", inSql);
+
+    return jdbcTemplate.query(sql, (rs, rowNum) -> new Order(
+        rs.getInt("id"),
+        rs.getInt("company_id"),
+        rs.getInt("factory_id"),
+        rs.getInt("material_id"),
+        rs.getInt("qty"),
+        rs.getInt("cathode_production"),
+        rs.getInt("anode_production")
+    ));
+  }
+
+
   public void updateStatus(List<Integer> orderId, int newStatus) {
     String inSql = orderId.stream()
         .map(String::valueOf)
@@ -60,30 +82,24 @@ public class OrderDao {
     jdbcTemplate.update(sql, newStatus);
   }
 
-//  public void insertOrder(Order order) {
-//    String sql = String.format(
-//        "INSERT INTO %s (companyId, factoryId, materialId, qty, purchasePrice, orderDate, expectedDeliveryDate, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-//        ORDERTABLE);
-//    jdbcTemplate.update(sql, order.getCompanyId(), order.getFactoryId(), order.getMaterialId(), order.getQty(), order.getPurchasePrice(),
-//        order.getOrderDate(), order.getExpectedDeliveryDate(), order.getStatus());
-//  }
-
   public int insertOrder(Order order) {
-    final String sql = String.format("INSERT INTO %s (company_id, factory_id, material_id, qty, purchase_price, order_date, expected_delivery_date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)", ORDERTABLE);
+    final String sql = String.format(
+        "INSERT INTO %s (company_id, factory_id, material_id, qty, purchase_price, order_date, expected_delivery_date, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+        ORDERTABLE);
     KeyHolder keyHolder = new GeneratedKeyHolder();
 
     jdbcTemplate.update(
-        connection ->  {
+        connection -> {
           PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setInt(1, order.getCompanyId());
-            ps.setInt(2, order.getFactoryId());
-            ps.setInt(3, order.getMaterialId());
-            ps.setInt(4, order.getQty());
-            ps.setFloat(5, order.getPurchasePrice());
-            ps.setDate(6, order.getOrderDate());
-            ps.setDate(7, order.getExpectedDeliveryDate());
-            ps.setInt(8, order.getStatus());
-            return ps;
+          ps.setInt(1, order.getCompanyId());
+          ps.setInt(2, order.getFactoryId());
+          ps.setInt(3, order.getMaterialId());
+          ps.setInt(4, order.getQty());
+          ps.setFloat(5, order.getPurchasePrice());
+          ps.setDate(6, order.getOrderDate());
+          ps.setDate(7, order.getExpectedDeliveryDate());
+          ps.setInt(8, order.getStatus());
+          return ps;
         },
         keyHolder);
 

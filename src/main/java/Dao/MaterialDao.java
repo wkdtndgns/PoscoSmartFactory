@@ -18,6 +18,7 @@ public class MaterialDao {
   private static final RowMapper<Material> MATERIAL_ROW_MAPPER = (rs, rowNum) -> new Material(
       rs.getInt("id"),
       rs.getString("name"),
+      rs.getString("description"),
       rs.getTimestamp("created_ts").toLocalDateTime()
   );
 

@@ -34,6 +34,7 @@
                 <thead>
                 <tr>
                   <th>이름</th>
+                  <th>내용</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -43,6 +44,8 @@
                 %>
                 <tr>
                   <td><%= m.getName() %>
+                  </td>
+                  <td><%= m.getDescription() %>
                   </td>
                 </tr>
                 <% } %>

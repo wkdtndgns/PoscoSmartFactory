@@ -25,6 +25,8 @@ public class Production {
   private String orderNo;
   private String factoryName;
 
+  private String companyName;
+  private String materialName;
   public Production(int orderId, int factoryId, int qty, Date startDate, Date expectedCompletionDate, int status) {
     this.orderId = orderId;
     this.factoryId = factoryId;
@@ -35,7 +37,7 @@ public class Production {
   }
 
   public Production(int id, int orderId, int factoryId, int qty, Date startDate, Date expectedCompletionDate, int status, LocalDateTime createdTs,
-      String orderNo, String factoryName) {
+      String orderNo, String factoryName,String companyName,String materialName) {
     this.id = id;
     this.orderId = orderId;
     this.factoryId = factoryId;
@@ -46,6 +48,24 @@ public class Production {
     this.createdTs = createdTs;
     this.orderNo = orderNo;
     this.factoryName = factoryName;
+    this.companyName = companyName;
+    this.materialName = materialName;
+  }
+
+  public String getCompanyName() {
+    return companyName;
+  }
+
+  public void setCompanyName(String companyName) {
+    this.companyName = companyName;
+  }
+
+  public String getMaterialName() {
+    return materialName;
+  }
+
+  public void setMaterialName(String materialName) {
+    this.materialName = materialName;
   }
 
   public int getId() {

@@ -7,14 +7,16 @@ public class Material {
   private int id;
 
   private String name;
+  private  String description;
 
   private LocalDateTime createdTs;
 
   // getters and setters
 
-  public Material(int id, String name, LocalDateTime createdTs) {
+  public Material(int id, String name, String description, LocalDateTime createdTs) {
     this.id = id;
     this.name = name;
+    this.description = description;
     this.createdTs = createdTs;
   }
 
@@ -40,6 +42,14 @@ public class Material {
 
   public void setCreatedTs(LocalDateTime createdTs) {
     this.createdTs = createdTs;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
   @Override

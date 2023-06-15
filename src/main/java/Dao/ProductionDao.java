@@ -27,14 +27,19 @@ public class ProductionDao {
       rs.getInt("status"),
       rs.getTimestamp("created_ts").toLocalDateTime(),
       rs.getString("order_id"),
-      rs.getString("factory_name")
+      rs.getString("factory_name"),
+      rs.getString("company_name"),
+      rs.getString("material_name")
   );
 
   public List<Production> findAll() {
-    String sql = String.format("select *, tf.name as factory_name\n"
+    String sql = String.format("select *, tc.name as company_name, tm.name as material_name, tord.id as order_id, tf.name as factory_name\n"
         + "from t_production as tp\n"
         + " left join t_factories tf on tp.factory_id = tf.id\n"
-        + " left join t_orders tord on tord.id = tp.order_id");
+        + " left join t_orders tord on tord.id = tp.order_id\n"
+        + " left join t_companies tc on tc.id = tord.company_id\n"
+        + " left join t_materials tm on tord.material_id = tm.id\n"
+    );
     return jdbcTemplate.query(sql, PRODUCTION_ROW_MAPPER);
   }
 

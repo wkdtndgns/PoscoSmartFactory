@@ -31,6 +31,10 @@ public class Order {
   private String factoryName;
   private String materialName;
 
+  private int cathodeProduction;
+
+  private int anodeProduction;
+
   public Order(int companyId, int factoryId, int materialId, int qty, float purchasePrice, Date orderDate, Date expectedDeliveryDate, int status) {
     this.companyId = companyId;
     this.factoryId = factoryId;
@@ -58,8 +62,34 @@ public class Order {
     this.factoryName = factoryName;
     this.materialName = materialName;
   }
+
+  public Order(int id, int companyId, int factoryId, int materialId, int qty, int cathodeProduction, int anodeProduction) {
+    this.id = id;
+    this.companyId = companyId;
+    this.factoryId = factoryId;
+    this.materialId = materialId;
+    this.qty = qty;
+    this.cathodeProduction = cathodeProduction;
+    this.anodeProduction = anodeProduction;
+  }
   // getters and setters
 
+
+  public int getCathodeProduction() {
+    return cathodeProduction;
+  }
+
+  public void setCathodeProduction(int cathodeProduction) {
+    this.cathodeProduction = cathodeProduction;
+  }
+
+  public int getAnodeProduction() {
+    return anodeProduction;
+  }
+
+  public void setAnodeProduction(int anodeProduction) {
+    this.anodeProduction = anodeProduction;
+  }
 
   public int getId() {
     return id;
@@ -183,6 +213,11 @@ public class Order {
         ", expectedDeliveryDate=" + expectedDeliveryDate +
         ", status=" + status +
         ", createdTs=" + createdTs +
+        ", companyName='" + companyName + '\'' +
+        ", factoryName='" + factoryName + '\'' +
+        ", materialName='" + materialName + '\'' +
+        ", cathodeProduction=" + cathodeProduction +
+        ", anodeProduction=" + anodeProduction +
         '}';
   }
 }
