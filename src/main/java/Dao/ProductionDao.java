@@ -45,4 +45,11 @@ public class ProductionDao {
     String sql = String.format("UPDATE %s SET status = ? WHERE id IN (%s)", PRODUCTIONTABLE, inSql);
     jdbcTemplate.update(sql, newStatus);
   }
+
+  public void insertProduction(Production production) {
+    String sql = String.format("INSERT INTO %s (order_id, factory_id, qty, start_date, expected_completion_date, status) VALUES (?, ?, ?, ?, ?, ?)",
+        PRODUCTIONTABLE);
+    jdbcTemplate.update(sql, production.getOrderId(), production.getFactoryId(), production.getQty(), production.getStartDate(),
+        production.getExpectedCompletionDate(), production.getStatus());
+  }
 }

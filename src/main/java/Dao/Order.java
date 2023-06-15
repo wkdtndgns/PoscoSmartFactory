@@ -1,7 +1,6 @@
 package Dao;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 
@@ -31,6 +30,17 @@ public class Order {
 
   private String factoryName;
   private String materialName;
+
+  public Order(int companyId, int factoryId, int materialId, int qty, float purchasePrice, Date orderDate, Date expectedDeliveryDate, int status) {
+    this.companyId = companyId;
+    this.factoryId = factoryId;
+    this.materialId = materialId;
+    this.qty = qty;
+    this.purchasePrice = purchasePrice;
+    this.orderDate = orderDate;
+    this.expectedDeliveryDate = expectedDeliveryDate;
+    this.status = status;
+  }
 
   public Order(int id, int companyId, int factoryId, int materialId, int qty, float purchasePrice, Date orderDate, Date expectedDeliveryDate,
       int status, LocalDateTime createdTs, String companyName, String factoryName, String materialName) {
@@ -91,7 +101,11 @@ public class Order {
     this.qty = qty;
   }
 
-  public String getPurchasePrice() {
+  public float getPurchasePrice() {
+    return purchasePrice;
+  }
+
+  public String getPurchasePriceToString() {
     DecimalFormat formatter = new DecimalFormat("#,###");
     return formatter.format(this.purchasePrice);
   }

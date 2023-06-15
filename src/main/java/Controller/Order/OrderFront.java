@@ -13,7 +13,7 @@ public class OrderFront {
 
   private final OrderService orderService;
 
-  public OrderFront(){
+  public OrderFront() {
     orderService = new OrderService();
   }
 

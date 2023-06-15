@@ -124,7 +124,7 @@
                   </td>
                   <td><%= o.getQty() %>
                   </td>
-                  <td><%= o.getPurchasePrice() %>
+                  <td><%= o.getPurchasePriceToString() %>
                   </td>
                   <td><%= o.getOrderDate() %>
                   </td>

@@ -25,6 +25,15 @@ public class Production {
   private String orderNo;
   private String factoryName;
 
+  public Production(int orderId, int factoryId, int qty, Date startDate, Date expectedCompletionDate, int status) {
+    this.orderId = orderId;
+    this.factoryId = factoryId;
+    this.qty = qty;
+    this.startDate = startDate;
+    this.expectedCompletionDate = expectedCompletionDate;
+    this.status = status;
+  }
+
   public Production(int id, int orderId, int factoryId, int qty, Date startDate, Date expectedCompletionDate, int status, LocalDateTime createdTs,
       String orderNo, String factoryName) {
     this.id = id;
