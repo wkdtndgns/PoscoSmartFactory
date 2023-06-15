@@ -1,8 +1,8 @@
 package Comm;
 
 public enum ProductionStatus {
-  IN_PROGRESS(10),
-  COMPLETED(20);
+  진행중(10),
+  완료(20);
 
   private final int status;
 

@@ -3,6 +3,7 @@ package Dao;
 import Util.DatabaseUtil;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -39,5 +40,13 @@ public class OrderDao {
         + "         left join t_companies tc on tord.company_id = tc.id");
 
     return jdbcTemplate.query(sql, ORDER_ROW_MAPPER);
+  }
+
+  public void updateStatus(List<Integer>  orderId, int newStatus) {
+    String inSql = orderId.stream()
+        .map(String::valueOf)
+        .collect(Collectors.joining(","));
+    String sql = String.format("UPDATE %s SET status = ? WHERE id IN (%s)", ORDERTABLE, inSql);
+    jdbcTemplate.update(sql, newStatus);
   }
 }

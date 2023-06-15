@@ -21,10 +21,6 @@ public class OrderFront {
   public ModelAndView list() {
     ModelAndView mv = new ModelAndView("Order/list");
     List<Order> orders = orderService.getList();
-    for(Order order : orders){
-      System.out.println(order.toString());
-    }
-
     mv.addObject("orders", orders);
     return mv;
   }

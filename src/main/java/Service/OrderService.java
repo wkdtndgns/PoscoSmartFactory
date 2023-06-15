@@ -15,4 +15,8 @@ public class OrderService {
   public List<Order> getList() {
     return orderDao.findAll();
   }
+
+  public void updateOrderStatus(List<Integer> orderId, int newStatus) {
+    orderDao.updateStatus(orderId, newStatus);
+  }
 }

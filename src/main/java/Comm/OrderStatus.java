@@ -1,8 +1,9 @@
 package Comm;
 
 public enum OrderStatus {
-  IN_PROGRESS(10),
-  SHIPPED(20);
+  진행중(10),
+  발송(20),
+  완료(30);
 
   private final int status;
 
