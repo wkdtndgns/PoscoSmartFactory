@@ -1,19 +1,15 @@
 package Controller;
 
 import Dao.Company;
-import Dao.CompanyDao;
 import Service.CompanyService;
-import Util.*;
 
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.sql.DataSource;
 import java.util.List;
 
 @Controller
-public class Tiger {
+public class Test {
 
   @RequestMapping("/t1")
   public String func01() {
@@ -23,6 +19,6 @@ public class Tiger {
     for (Company company : companies) {
       System.out.println(company);
     }
-    return "TigerView"; // View 갈려고 시도합니다.
+    return "company/list"; // View 갈려고 시도합니다.
   }
 }

@@ -20,9 +20,9 @@
     rel="stylesheet">
 
 <!-- Custom styles for this template-->
-<link href="/css/sb-admin-2.min.css" rel="stylesheet">
+<link href="<%= absolutePath%>/css/sb-admin-2.min.css" rel="stylesheet">
 
-<link href="/css/table/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="<%= absolutePath%>/css/table/dataTables.bootstrap4.min.css" rel="stylesheet">
 
-<script src="/css/table/jquery.dataTables.min.js"></script>
-<script src="/css/table/dataTables.bootstrap4.min.js"></script>
+<script src="<%= absolutePath%>/css/table/jquery.dataTables.min.js"></script>
+<script src="<%= absolutePath%>/css/table/dataTables.bootstrap4.min.js"></script>
