@@ -3,13 +3,13 @@
 <script>
   $(document).ready(function () {
     var menuData = [
-      {text: "Home", href: "/index.jsp"},
-      {text: "공장관리", href: "/"},
-      {text: "기업관리", href: "/"},
-      {text: "재료관리", href: "/"},
-      {text: "비율관리", href: "/"},
-      {text: "주문관리", href: "/"},
-      {text: "생산관리", href: "/"},
+      {text: "Home", href: "/"},
+      {text: "공장관리", href: "/factory/list"},
+      {text: "기업관리", href: "/company/list"},
+      {text: "재료관리", href: "/material/list"},
+      {text: "비율관리", href: "/rate/list"},
+      {text: "주문관리", href: "/order/list"},
+      {text: "생산관리", href: "/production/list"},
     ];
 
     var $menu = $("#accordionSidebar");

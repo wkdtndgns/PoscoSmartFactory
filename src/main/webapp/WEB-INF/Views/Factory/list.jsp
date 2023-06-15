@@ -1,10 +1,15 @@
-<%@ page import="Dao.Company, java.util.List, Comm.CompanyCategory" %>
+<%@ page import="Dao.Company, java.util.List, Comm.CompanyCategory, Dao.Material, Dao.Factory" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
   <jsp:include page="../include/header.jsp"/>
-  <script src="<%=request.getContextPath()%>/js/company/list.js"></script>
+  <script>
+    $(document).ready(function() {
+      console.log('ddd');
+      $('#dataTable').DataTable();
+    });
+  </script>
 </head>
 <body id="page-top">
 <!-- Page Wrapper -->
@@ -28,32 +33,26 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                 <tr>
-                  <th>기업 이름</th>
-                  <th>기업 분류</th>
-                  <th>기업 소개</th>
-                  <th>기업 위치</th>
-                  <th>총 양극재 구매 수량</th>
-                  <th>총 음극재 구매 수량</th>
+                  <th>이름</th>
+                  <th>위치</th>
+                  <th>음극재 생산량</th>
+                  <th>양극재 생산량</th>
+                  <th>음극재 재고</th>
+                  <th>양극재 재고</th>
                 </tr>
                 </thead>
                 <tbody>
                 <%
-                  List<Company> companies = (List<Company>) request.getAttribute("companies");
-                  for (Company c : companies) {
+                  List<Factory> factories = (List<Factory>) request.getAttribute("factories");
+                  for (Factory f : factories) {
                 %>
                 <tr>
-                  <td><%= c.getName() %>
-                  </td>
-                  <td><%= CompanyCategory.getDescriptionByCode(c.getCategory())%>
-                  </td>
-                  <td><%= c.getIntroduction()%>
-                  </td>
-                  <td><%=c.getLocation()%>
-                  </td>
-                  <td><%=c.getTotalAnodeQty()%>
-                  </td>
-                  <td><%=c.getTotalCathodeQty()%>
-                  </td>
+                  <td><%= f.getName() %></td>
+                  <td><%= f.getLocation() %></td>
+                  <td><%= f.getCathodeProduction() %></td>
+                  <td><%= f.getAnodeProduction() %></td>
+                  <td><%= f.getCathodeStock() %></td>
+                  <td><%= f.getAnodeStock() %></td>
                 </tr>
                 <% } %>
                 </tbody>

@@ -11,8 +11,6 @@ public class Index {
 
   @RequestMapping("/")
   public String index() {
-    System.out.println("func01 call");
-
     return "index"; // View 갈려고 시도합니다.
   }
 }

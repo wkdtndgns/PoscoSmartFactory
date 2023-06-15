@@ -1,10 +1,9 @@
-<%@ page import="Dao.Company, java.util.List, Comm.CompanyCategory" %>
+<%@ page import="Dao.Company, java.util.List, Comm.CompanyCategory, Dao.Material" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
   <jsp:include page="../include/header.jsp"/>
-  <script src="<%=request.getContextPath()%>/js/company/list.js"></script>
 </head>
 <body id="page-top">
 <!-- Page Wrapper -->
@@ -28,31 +27,17 @@
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                 <tr>
-                  <th>기업 이름</th>
-                  <th>기업 분류</th>
-                  <th>기업 소개</th>
-                  <th>기업 위치</th>
-                  <th>총 양극재 구매 수량</th>
-                  <th>총 음극재 구매 수량</th>
+                  <th>이름</th>
+                  <th>설명</th>
                 </tr>
                 </thead>
                 <tbody>
                 <%
-                  List<Company> companies = (List<Company>) request.getAttribute("companies");
-                  for (Company c : companies) {
+                  List<Material> materials = (List<Material>) request.getAttribute("materials");
+                  for (Material m : materials) {
                 %>
                 <tr>
-                  <td><%= c.getName() %>
-                  </td>
-                  <td><%= CompanyCategory.getDescriptionByCode(c.getCategory())%>
-                  </td>
-                  <td><%= c.getIntroduction()%>
-                  </td>
-                  <td><%=c.getLocation()%>
-                  </td>
-                  <td><%=c.getTotalAnodeQty()%>
-                  </td>
-                  <td><%=c.getTotalCathodeQty()%>
+                  <td><%= m.getName() %>
                   </td>
                 </tr>
                 <% } %>

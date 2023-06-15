@@ -11,8 +11,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping("company")
 public class CompanyFront {
+
   private final CompanyService companyService;
-  public CompanyFront(){
+
+  public CompanyFront() {
     companyService = new CompanyService();
   }
 
@@ -21,6 +23,10 @@ public class CompanyFront {
     ModelAndView mv = new ModelAndView("Company/list");
     List<Company> companies = companyService.getList();
     mv.addObject("companies", companies);
+    mv.addObject("limit", 10);
+    mv.addObject("page", 1);
+    mv.addObject("totalPage", 2);
+    mv.addObject("search", "");
 
     return mv;
   }
