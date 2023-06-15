@@ -6,10 +6,10 @@
   <jsp:include page="../include/header.jsp"/>
   <script>
     $(document).ready(function() {
-      console.log('ddd');
       $('#dataTable').DataTable();
     });
   </script>
+
 </head>
 <body id="page-top">
 <!-- Page Wrapper -->
@@ -26,7 +26,7 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">기업 목록</h6>
+            <h6 class="m-0 font-weight-bold text-primary">공장 목록</h6>
           </div>
           <div class="card-body">
             <div class="table-responsive">
