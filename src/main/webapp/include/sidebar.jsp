@@ -4,7 +4,7 @@
   $(document).ready(function () {
     var menuData = [
       {text: "Home", href: "/index.jsp"},
-      {text: "공장관리", href: "/"},
+      {text: "공장관리", href: "/companies.jsp"},
       {text: "기업관리", href: "/"},
       {text: "재료관리", href: "/"},
       {text: "비율관리", href: "/"},
