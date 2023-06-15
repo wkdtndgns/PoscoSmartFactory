@@ -26,7 +26,6 @@ public class ProductionService {
     return productionDao.findAll();
   }
 
-
   @Transactional
   public void updateProductionStatus(ProductionStatusUpdateRequest request) {
     productionDao.updateStatus(request.getProductionIds(), request.getStatus());
