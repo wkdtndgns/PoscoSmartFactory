@@ -21,9 +21,6 @@ public class RatiomFront {
         ModelAndView mv = new ModelAndView("RatioM/list");
         List<Ratiom> ratioms = ratiomService.getList();
 
-        for(Ratiom r : ratioms)
-            System.out.println(r);
-
         mv.addObject("ratioms", ratioms);
         return mv; // View 갈려고 시도합니다.
     }

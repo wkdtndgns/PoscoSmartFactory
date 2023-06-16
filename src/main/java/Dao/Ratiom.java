@@ -24,11 +24,11 @@ public class Ratiom {
     }
 
     public int getId(){return  id;}
-    public float getLithium(){return lithium;}
-    public float getNickel(){return nickel;}
-    public float getCobalt(){return cobalt;}
-    public float getManganese(){return manganese;}
-    public float getaluminium(){return aluminium;}
+    public int getLithium(){return (int) lithium;}
+    public int getNickel(){return (int) nickel;}
+    public int getCobalt(){return (int) cobalt;}
+    public int getManganese(){return (int) manganese;}
+    public int getaluminium(){return (int) aluminium;}
     public void setCreatedTs(LocalDateTime createdTs) {
         this.createdTs = createdTs;
     }
