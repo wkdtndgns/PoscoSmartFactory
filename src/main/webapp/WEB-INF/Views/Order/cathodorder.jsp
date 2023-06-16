@@ -22,6 +22,8 @@
                         <div class="card shadow mb-4">
                             <div class="card-header py-3">
                                 <h6 class="m-0 font-weight-bold text-primary">양극재</h6>
+                                <input id="cathoprice" type="hidden" value="${cathoprice}">
+
                             </div>
                             <div class="card-body">
                                 <div id="pricePositive" class="font-weight-bold text-danger">가격: ${cathoprice}</div>(원)
@@ -81,13 +83,80 @@
 </a>
 <script>function calculateOrderPrice() {
     var quantityPositive = document.getElementById('quantityPositiveOrder').value;
-    var pricePositive = 450000; // 양극재 1개 가격
+    var cathoprice = document.getElementById('cathoprice').value;
 
-    var totalPositive = quantityPositive * pricePositive;
+
+    var totalPositive = quantityPositive * cathoprice;
     var totalPrice = totalPositive ;
 
     var orderPriceElement = document.getElementById('orderPrice');
     orderPriceElement.innerHTML = '총 주문 가격: ' + totalPrice.toLocaleString() + '원';
-}</script>
+}
+function placeOrder() {
+    var factoryOption = document.getElementById('factoryOption').value;
+    var quantityPositive = document.getElementById('quantityPositiveOrder').value;
+    var cathoprice = document.getElementById('cathoprice').value;
+
+    var totalPrice = quantityPositive * cathoprice;
+
+    // Create a form element
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = 'orderActionPositive'; // Replace with the actual action URL
+
+    // Create an input element for total order price
+    var totalPriceInput = document.createElement('input');
+    totalPriceInput.type = 'hidden';
+    totalPriceInput.name = 'totalPrice';
+    totalPriceInput.value = totalPrice;
+
+    // Create an input element for anode quantity
+    var quantityPositiveInput = document.createElement('input');
+    quantityPositiveInput.type = 'hidden';
+    quantityPositiveInput.name = 'quantityPositive';
+    quantityPositiveInput.value = quantityPositive;
+
+    // Create an input element for selected factory
+    var factoryOptionInput = document.createElement('input');
+    factoryOptionInput.type = 'hidden';
+    factoryOptionInput.name = 'factoryOption';
+    factoryOptionInput.value = factoryOption;
+
+    var factoryIdInput = document.createElement('input');
+    factoryIdInput.type = 'hidden';
+    factoryIdInput.name = 'factoryId';
+    factoryIdInput.value = getFactoryId(factoryOption); // factoryOption에 따라 factory_id를 설정합니다.
+
+    // Append the input elements to the form
+    form.appendChild(totalPriceInput);
+    form.appendChild(quantityPositiveInput);
+    form.appendChild(factoryOptionInput);
+    form.appendChild(factoryIdInput);
+
+    // Append the form to the document body and submit it
+    document.body.appendChild(form);
+    form.submit();
+}
+
+function getFactoryId(factoryOption) {
+    var factoryId;
+    switch (factoryOption) {
+        case '광양':
+            factoryId = 1;
+            break;
+        case '포항':
+            factoryId = 2;
+            break;
+        case '구미':
+            factoryId = 3;
+            break;
+        default:
+            factoryId = 0;
+            break;
+    }
+    return factoryId;
+}
+
+</script>
 </body>
 </html>

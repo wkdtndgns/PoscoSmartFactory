@@ -35,6 +35,8 @@
                             </div>
                             <div class="card-body">
                                 <div id="priceNegative" class="font-weight-bold text-danger">가격: ${anodeprice}</div> (원)
+                                <input id="anodeprice" type="hidden" value="${anodeprice}">
+
                             </div>
                         </div>
                     </div>
@@ -42,7 +44,7 @@
                 <div class="row">
                     <div class="col-lg-12 mb-4">
                         <div class="card shadow">
-                            <div class="card-body">
+                            < class="card-body">
                                 <div class="font-weight-bold">실시간 환율:</div>
                                 <div id="exchangeRate" class="font-weight-bold">${rate}</div>
                             </div>
@@ -79,15 +81,81 @@
 <a class="scroll-to-top rounded" href="#page-top">
     <i class="fas fa-angle-up"></i>
 </a>
-<script>function calculateOrderPrice() {
+<script>
+    function calculateOrderPrice() {
     var quantityNegative = document.getElementById('quantityNegativeOrder').value;
-    var priceNegative = 352000; // 음극재 1개 가격
-
-    var totalNegative = quantityNegative * priceNegative;
+    var anodeprice = document.getElementById('anodeprice').value;
+    var totalNegative = quantityNegative * anodeprice;
     var totalPrice = totalNegative;
-
     var orderPriceElement = document.getElementById('orderPrice');
     orderPriceElement.innerHTML = '총 주문 가격: ' + totalPrice.toLocaleString() + '원';
-}</script>
+
+
+}
+    function placeOrder() {
+        var factoryOption = document.getElementById('factoryOption').value;
+        var quantityNegative = document.getElementById('quantityNegativeOrder').value;
+        var anodeprice = document.getElementById('anodeprice').value;
+
+        var totalPrice = quantityNegative * anodeprice; // 음극재 1개 가격
+
+        // Create a form element
+        var form = document.createElement('form');
+        form.method = 'POST';
+        form.action = 'orderAction'; // Replace with the actual action URL
+
+        // Create an input element for total order price
+        var totalPriceInput = document.createElement('input');
+        totalPriceInput.type = 'hidden';
+        totalPriceInput.name = 'totalPrice';
+        totalPriceInput.value = totalPrice;
+
+        // Create an input element for anode quantity
+        var quantityNegativeInput = document.createElement('input');
+        quantityNegativeInput.type = 'hidden';
+        quantityNegativeInput.name = 'quantityNegative';
+        quantityNegativeInput.value = quantityNegative;
+
+        // Create an input element for selected factory
+        var factoryOptionInput = document.createElement('input');
+        factoryOptionInput.type = 'hidden';
+        factoryOptionInput.name = 'factoryOption';
+        factoryOptionInput.value = factoryOption;
+
+        var factoryIdInput = document.createElement('input');
+        factoryIdInput.type = 'hidden';
+        factoryIdInput.name = 'factoryId';
+        factoryIdInput.value = getFactoryId(factoryOption); // factoryOption에 따라 factory_id를 설정합니다.
+
+        // Append the input elements to the form
+        form.appendChild(totalPriceInput);
+        form.appendChild(quantityNegativeInput);
+        form.appendChild(factoryOptionInput);
+        form.appendChild(factoryIdInput);
+
+        // Append the form to the document body and submit it
+        document.body.appendChild(form);
+        form.submit();
+    }
+     function getFactoryId(factoryOption) {
+        var factoryId;
+        switch (factoryOption) {
+            case '광양':
+                factoryId = 1;
+                break;
+            case '포항':
+                factoryId = 2;
+                break;
+            case '구미':
+                factoryId = 3;
+                break;
+            default:
+                factoryId = 0;
+                break;
+        }
+        return factoryId;
+    }
+
+</script>
 </body>
 </html>

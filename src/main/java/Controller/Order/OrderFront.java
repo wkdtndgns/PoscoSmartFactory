@@ -95,7 +95,7 @@ public class OrderFront {
     anovalue= anovalue*rate;
 
 
-    ModelAndView mv = new ModelAndView("Order/cathodorder");
+    ModelAndView mv = new ModelAndView("Order/anodeorder");
     mv.addObject("anodeprice", anovalue);
     mv.addObject("cathoprice", cathoprice);
     mv.addObject("rate", rate);
