@@ -190,6 +190,10 @@
             </div>
           </div>
         </div>
+
+        <div class="row divMessage">
+
+        </div>
         <!-- Content Row -->
       </div>
       <!-- /.container-fluid -->

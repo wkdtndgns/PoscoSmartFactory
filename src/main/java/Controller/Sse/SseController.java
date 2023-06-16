@@ -1,7 +1,10 @@
 package Controller.Sse;
+import Service.SseEmittersService;
+import java.util.Optional;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
@@ -10,10 +13,10 @@ import java.io.IOException;
 @RestController
 @RequestMapping("sse")
 public class SseController {
-  private final SseEmitters sseEmitters;
+  private final SseEmittersService sseEmitters;
 
   public SseController() {
-    sseEmitters = new SseEmitters();
+    sseEmitters = new SseEmittersService();
   }
 
   @GetMapping(value = "/connect", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
@@ -30,9 +33,15 @@ public class SseController {
     return ResponseEntity.ok(emitter);
   }
 
-  @GetMapping("/count")
-  public ResponseEntity<Void> count() {
-    sseEmitters.count();
+  @GetMapping("/success/{orderId}")
+  public ResponseEntity<Void> success(@PathVariable Integer orderId) {
+    sseEmitters.send("success",orderId);
+    return ResponseEntity.ok().build();
+  }
+
+  @GetMapping("/danger/{orderId}")
+  public ResponseEntity<Void> danger(@PathVariable Integer orderId) {
+    sseEmitters.send("danger",orderId);
     return ResponseEntity.ok().build();
   }
 }

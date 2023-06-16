@@ -5,6 +5,7 @@
 <head>
   <jsp:include page="../include/header.jsp"/>
   <script src="<%=request.getContextPath()%>/js/production/list.js"></script>
+  <script src="<%=request.getContextPath()%>/js/order/comm.js"></script>
 </head>
 <body id="page-top">
 <!-- Page Wrapper -->
@@ -18,25 +19,26 @@
       <!-- Begin Page Content -->
       <div class="container-fluid">
 
+        <input type="hidden" id="hidPrevStatus" value="<%= request.getAttribute("status")%>">
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
-          <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary" style="display: contents">생산 목록</h6>
-            <div style="float: right; display: flex;">
-              <form method="get" action="/production/list">
-              <div style="margin-right: 15px;">
-                <select class="form-control" name="status">
-                  <option value="">전체</option>
-                  <option value="10">진행중</option>
-                  <option value="20">완료</option>
-                </select>
+          <form id="frm" method="get" action="/production/list">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary" style="display: contents">생산 목록</h6>
+              <div style="float: right; display: flex;">
+                <div style="margin-right: 15px;">
+                  <select class="form-control" name="status" id="selStatus">
+                    <option value="">전체</option>
+                    <option value="10">진행중</option>
+                    <option value="20">완료</option>
+                  </select>
+                </div>
+                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="btnOrderStatus">
+                  <i class="fas fa-download fa-sm text-white-50"></i> 완료
+                </a>
               </div>
-              <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="btnOrderStatus">
-                <i class="fas fa-download fa-sm text-white-50"></i> 완료
-              </a>
-              </form>
             </div>
-          </div>
+          </form>
           <div class="card-body">
             <div class="table-responsive">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">

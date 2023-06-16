@@ -6,25 +6,6 @@
  */
 
 $(document).ready(function () {
-  $('#dataTable').DataTable({
-    "columnDefs": [
-      {
-        "orderable": false,
-        "targets": 0
-      }
-    ]
-  });
-
-  $('.allChk').click(function () {
-    const b = $('.allChk').prop("checked");
-    $('.rowChk:enabled').prop("checked", b);
-  });
-
-  $(document).delegate('.rowChk', 'click', function (e) {
-    var bIsAllChecked = ($('.rowChk:checked').length === $('.rowChk').length) ? true : false;
-    $('.allChk').prop('checked', bIsAllChecked);
-  });
-
   $('#btnOrderStatus').click(function () {
     const productionNo = []
     const orderNo = []

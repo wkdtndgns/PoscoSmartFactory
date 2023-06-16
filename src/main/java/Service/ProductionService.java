@@ -7,7 +7,9 @@ import Dao.Order;
 import Dao.OrderDao;
 import Dao.Production;
 import Dao.ProductionDao;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.transaction.annotation.Transactional;
 
 public class ProductionService {
@@ -22,22 +24,26 @@ public class ProductionService {
     this.factoryDao = new FactoryDao();
   }
 
-  public List<Production> getList() {
-    return productionDao.findAll();
+  public List<Production> getList(String status) {
+    return productionDao.findAll(status);
   }
 
   @Transactional
   public void updateProductionStatus(ProductionStatusUpdateRequest request) {
     productionDao.updateStatus(request.getProductionIds(), request.getStatus());
     orderDao.updateStatus(request.getOrderNo(), 20);
-
     List<Order> orderList = orderDao.findByIds(request.getOrderNo());
+
+    // Initialize Maps
+    Map<Integer, Integer> anodeMap = new HashMap<>();
+    Map<Integer, Integer> cathodeMap = new HashMap<>();
+
     for (Order order : orderList) {
-      System.out.println(order);
+      int factoryId = order.getFactoryId();
       if (order.getMaterialId() == 1) { // 양극재
-        factoryDao.updateAnodeProduction(order.getFactoryId(), order.getAnodeProduction() + order.getQty());
+        anodeMap.put(factoryId, anodeMap.getOrDefault(factoryId, order.getAnodeProduction()) + order.getQty());
       } else if (order.getMaterialId() == 2) { // 음극재
-        factoryDao.updateCathodeProduction(order.getFactoryId(), order.getCathodeProduction() + order.getQty());
+        cathodeMap.put(factoryId, cathodeMap.getOrDefault(factoryId, order.getCathodeProduction()) + order.getQty());
       }
     }
   }

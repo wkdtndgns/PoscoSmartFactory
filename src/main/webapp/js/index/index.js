@@ -13,11 +13,39 @@ $(document).ready(function() {
     console.log('connect event data: ',receivedConnectData);  // "connected!"
   });
 
-  sse.addEventListener('count', e => {
-    const { data: receivedCount } = e;
-    console.log("count event data",receivedCount);
+  sse.addEventListener('success', e => {
+    const response = e;
+    const data = JSON.parse(response.data);
+
+    let html = `
+      <div class="col-lg-10 mb-4">
+            <div class="card bg-success text-white shadow">
+              <div class="card-body">
+                ${data.factoryName}에서 ${data.companyName}기업의 주문 ${data.id} 생산을 완료했습니다. 
+                <div class="text-white-50 small">success</div>
+              </div>
+            </div>
+          </div>
+    `;
+    $('.divMessage').append(html);
   });
 
+  sse.addEventListener('danger', e => {
+    const response = e;
+    const data = JSON.parse(response.data);
+
+    let html = `
+      <div class="col-lg-10 mb-4">
+           <div class="card bg-danger text-white shadow">
+               <div class="card-body">
+                   ${data.factoryName}에서 위험 신호를 보냈습니다. 
+                   <div class="text-white-50 small">danger</div>
+               </div>
+           </div>
+       </div>
+    `;
+    $('.divMessage').append(html);
+  });
 
   $('#dataTable').DataTable();
 

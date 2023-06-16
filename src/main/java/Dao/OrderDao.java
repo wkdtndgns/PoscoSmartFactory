@@ -37,21 +37,34 @@ public class OrderDao {
       rs.getDate("expected_delivery_date"),
       rs.getInt("status"),
       rs.getTimestamp("created_ts").toLocalDateTime(),
-      rs.getString("factory_name"),
       rs.getString("company_name"),
+      rs.getString("factory_name"),
       rs.getString("material_name")
   );
 
-  public List<Order> findAll() {
+  public List<Order> findAll(String status) {
     String sql = String.format("select tord.*, tf.name as factory_name, tc.name as company_name, tm.name as material_name\n"
         + "from t_orders as tord\n"
         + "         left join t_factories tf on tord.factory_id = tf.id\n"
         + "         left join t_materials tm on tord.material_id = tm.id\n"
         + "         left join t_companies tc on tord.company_id = tc.id\n"
-        + " order by tord.id desc"
     );
-
+    if (!status.equals("")) {
+      sql += " where tord.status = " + status + "\n";
+    }
+    sql += " order by tord.id desc ";
     return jdbcTemplate.query(sql, ORDER_ROW_MAPPER);
+  }
+
+  public Order findById(String id) {
+    String sql = String.format("select tord.*, tf.name as factory_name, tc.name as company_name, tm.name as material_name\n"
+        + "from t_orders as tord\n"
+        + "         left join t_factories tf on tord.factory_id = tf.id\n"
+        + "         left join t_materials tm on tord.material_id = tm.id\n"
+        + "         left join t_companies tc on tord.company_id = tc.id\n"
+    );
+    sql += " where tord.id = " + id + "\n";
+    return jdbcTemplate.queryForObject(sql, ORDER_ROW_MAPPER);
   }
 
   public List<Order> findByIds(List<Integer> orderIds) {
