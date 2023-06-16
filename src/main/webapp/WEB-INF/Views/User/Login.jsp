@@ -49,8 +49,13 @@
         $(document).ready(function() {
             // 버튼 클릭 시 아이디와 비밀번호 자동 입력
             $("#autoFillBtn").click(function() {
-                $("#username").val("posco");
-                $("#password").val("password");
+                $("#username").val("ssg");
+                $("#password").val("1234");
+            });
+
+            $("#companyMemberBtn").click(function() {
+                $("#username").val("ssg");
+                $("#password").val("1234");
             });
         });
     </script>
@@ -83,7 +88,8 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary">로그인</button>
                                 </form>
-                                    <button type="button" id="autoFillBtn" class="btn btn-secondary">자동 입력</button>
+                                <button type="button" id="autoFillBtn" class="btn btn-secondary">자동 입력</button>
+                                <button type="button" id="companyMemberBtn" class="btn btn-secondary">기업 회원</button>
                                 <% if (request.getAttribute("errorMessage") != null) { %>
                                 <script>
                                     $(document).ready(function() {
@@ -94,7 +100,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
             <!-- /.container-fluid -->
