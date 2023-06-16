@@ -72,7 +72,7 @@
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
-            <jsp:include page="../include/toolbar.jsp" />
+
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 <div class="row justify-content-center">
@@ -87,10 +87,15 @@
                                 <div class="form-group">
                                     <label for="category">기업 분류</label>
                                     <select id="category" class="form-control">
-                                        <option value="10">자동차 배터리 기업</option>
-                                        <option value="20">에너지 기업/ESS</option>
-                                        <option value="30">전자제품 기업</option>
+                                        <option value="10">자동차</option>
+                                        <option value="20">IT 기업</option>
+                                        <option value="30">에너지 기업/ESS</option>
+                                        <option value="40">배터리</option>
                                     </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="companyLocation">기업 위치</label>
+                                    <input type="text" class="form-control" id="companyLocation" placeholder="기업 위치를 입력하세요">
                                 </div>
                                 <div class="form-group">
                                     <label for="companyIntro">기업 소개</label>
@@ -115,7 +120,7 @@
                             </p>
                             <hr>
                             <p class="mb-0">최종 승인 신청 버튼을 눌러주세요.</p>
-                            <button id="finalApprovalBtn" class="btn btn-primary mt-3">최종 승인 신청</button>
+                            <button id="finalApprovalBtn" class="btn btn-primary mt-3">최종 생성</button>
                         </div>
                     </div>
                 </div>
@@ -212,6 +217,50 @@
             alert("최종 승인 신청이 완료되었습니다.");
         });
     });
+    $("#finalApprovalBtn").click(function () {
+        var companyName = $("#generatedCompanyName").text();
+        var generatedId = $("#generatedId").text();
+        var generatedPassword = $("#generatedPassword").text();
+        var companyLocation = $("#companyLocation").val();
+        var companyIntro = $("#companyIntro").val();
+        var category = $("#category").val();
+
+        // 데이터 전달을 위한 폼 생성
+        var $form = $("<form>")
+            .attr("method", "POST")
+            .attr("action", "/User/ComRegisterAction");
+
+        // hidden 필드 추가
+        $form.append($("<input>")
+            .attr("type", "hidden")
+            .attr("name", "companyName")
+            .val(companyName));
+        $form.append($("<input>")
+            .attr("type", "hidden")
+            .attr("name", "generatedId")
+            .val(generatedId));
+        $form.append($("<input>")
+            .attr("type", "hidden")
+            .attr("name", "generatedPassword")
+            .val(generatedPassword));
+        $form.append($("<input>")
+            .attr("type", "hidden")
+            .attr("name", "companyLocation")
+            .val(companyLocation));
+        $form.append($("<input>")
+            .attr("type", "hidden")
+            .attr("name", "companyIntro")
+            .val(companyIntro));
+        $form.append($("<input>")
+            .attr("type", "hidden")
+            .attr("name", "category")
+            .val(category));
+
+        // 폼을 body에 추가하고 전송
+        $("body").append($form);
+        $form.submit();
+    });
+
 </script>
 <!-- Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

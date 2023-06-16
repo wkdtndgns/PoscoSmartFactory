@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
-public class ProductionDao {
+public class  ProductionDao {
 
   private final JdbcTemplate jdbcTemplate;
   private static final String PRODUCTIONTABLE = "t_production";

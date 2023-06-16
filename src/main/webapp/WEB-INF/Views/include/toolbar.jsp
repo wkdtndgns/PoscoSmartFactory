@@ -22,11 +22,12 @@
 	// 세션이 null이거나 무효화되었는지 확인
 	if (nSession != null) {
 		// 세션이 유효한 경우 세션 정보 가져오기
-		nameUser = (String) nSession.getAttribute("name");
+		nameUser = (String) nSession.getAttribute("username");
 		ImageURLUser = (String) nSession.getAttribute("imageURL");
 	}
+//	String uName = nameUser.equals("posco") ? "주문 관리자" : "기업회원:" + nameUser;
 
-	String uName = nameUser != null ? nameUser : "관리자";
+	String uName = (nameUser != null && nameUser.equals("posco")) ? "주문 관리자" : "기업회원:" + nameUser;
 	String uImageURL = ImageURLUser != null ? ImageURLUser : absolutePathToolbar + "/img/undraw_profile.svg";
 	%>
 	<li class="nav-item dropdown no-arrow">

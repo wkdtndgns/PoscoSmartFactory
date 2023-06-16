@@ -28,4 +28,11 @@ public class CompanyFront {
 
     return mv;
   }
+
+
+  @RequestMapping("/companyhome")
+  public ModelAndView companyhome() {
+    ModelAndView mv = new ModelAndView("Company/companyhome");
+    return mv;
+  }
 }

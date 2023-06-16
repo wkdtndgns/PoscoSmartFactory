@@ -44,6 +44,16 @@
             background-color: #0056b3;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // 버튼 클릭 시 아이디와 비밀번호 자동 입력
+            $("#autoFillBtn").click(function() {
+                $("#username").val("posco");
+                $("#password").val("password");
+            });
+        });
+    </script>
 </head>
 <body id="page-top">
 <!-- Page Wrapper -->
@@ -53,7 +63,6 @@
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
         <div id="content">
-            <jsp:include page="../include/toolbar.jsp"/>
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 <div class="row">
@@ -63,17 +72,25 @@
                                 <h6 class="m-0 font-weight-bold text-primary">아이디/패스워드 로그인</h6>
                             </div>
                             <div class="card-body">
-                                <form class="login-form">
+                                <form class="login-form" action="/User/LoginAction" method="post">
                                     <div class="form-group">
                                         <label for="username">아이디</label>
-                                        <input type="text" id="username" class="form-control" placeholder="아이디를 입력하세요">
+                                        <input type="text" id="username" name="username" class="form-control" placeholder="아이디를 입력하세요">
                                     </div>
                                     <div class="form-group">
                                         <label for="password">패스워드</label>
-                                        <input type="password" id="password" class="form-control" placeholder="패스워드를 입력하세요">
+                                        <input type="password" id="password" name="password" class="form-control" placeholder="패스워드를 입력하세요">
                                     </div>
                                     <button type="submit" class="btn btn-primary">로그인</button>
                                 </form>
+                                    <button type="button" id="autoFillBtn" class="btn btn-secondary">자동 입력</button>
+                                <% if (request.getAttribute("errorMessage") != null) { %>
+                                <script>
+                                    $(document).ready(function() {
+                                        alert("<%= request.getAttribute("errorMessage") %>");
+                                    });
+                                </script>
+                                <% } %>
                             </div>
                         </div>
                     </div>
