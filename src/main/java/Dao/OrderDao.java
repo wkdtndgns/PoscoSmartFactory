@@ -47,7 +47,9 @@ public class OrderDao {
         + "from t_orders as tord\n"
         + "         left join t_factories tf on tord.factory_id = tf.id\n"
         + "         left join t_materials tm on tord.material_id = tm.id\n"
-        + "         left join t_companies tc on tord.company_id = tc.id");
+        + "         left join t_companies tc on tord.company_id = tc.id\n"
+        + " order by tord.id desc"
+    );
 
     return jdbcTemplate.query(sql, ORDER_ROW_MAPPER);
   }
@@ -104,5 +106,10 @@ public class OrderDao {
         keyHolder);
 
     return keyHolder.getKey().intValue();
+  }
+
+  public float getTotalCost() {
+    String sql = "SELECT SUM(qty * purchase_price) FROM t_orders";
+    return jdbcTemplate.queryForObject(sql, Float.class);
   }
 }

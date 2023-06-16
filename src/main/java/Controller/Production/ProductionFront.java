@@ -1,5 +1,5 @@
 package Controller.Production;
-
+import Controller.coreFront;
 import Dao.Production;
 import Service.ProductionService;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("production")
-public class ProductionFront {
+public class ProductionFront extends coreFront {
 
   private final ProductionService productionService;
   public ProductionFront(){

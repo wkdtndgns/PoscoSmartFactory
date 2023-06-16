@@ -39,6 +39,7 @@ public class ProductionDao {
         + " left join t_orders tord on tord.id = tp.order_id\n"
         + " left join t_companies tc on tc.id = tord.company_id\n"
         + " left join t_materials tm on tord.material_id = tm.id\n"
+        + " order by tp.id desc "
     );
     return jdbcTemplate.query(sql, PRODUCTION_ROW_MAPPER);
   }

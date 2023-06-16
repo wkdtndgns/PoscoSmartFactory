@@ -29,7 +29,7 @@
 	String uName = nameUser != null ? nameUser : "관리자";
 	String uImageURL = ImageURLUser != null ? ImageURLUser : absolutePathToolbar + "/img/undraw_profile.svg";
 	%>
-	<li class="nav-item dropdown no-arrow">
+	<li class="nav-item dropdown no-arrow" style="list-style: none;">
     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 

@@ -34,6 +34,8 @@ public class OrderService {
     Date expectedDeliveryDate = Date.valueOf(localDateTimeNow.plusDays(7).toLocalDate()); // Set expected delivery date 7 days from now
     Date expectedDDate = Date.valueOf(localDateTimeNow.plusDays(3).toLocalDate()); // Set expected delivery date 7 days from now
 
+    // 재고가 있으면 공장에 있는 수량 - 상태는 발송
+
     // Create an Order object for testing
 //    Order order = new Order(
 //        1,                   // companyId
@@ -45,9 +47,16 @@ public class OrderService {
 //        expectedDeliveryDate,  // expectedDeliveryDate
 //        10                     // status
 //    );
+
+
     int id = orderDao.insertOrder(order);
 
+    // 생산등록
     Production production = new Production(id, order.getFactoryId(), order.getQty(), startDate, expectedDDate, 10);
     productionDao.insertProduction(production);
+  }
+
+  public float getTotalCost() {
+    return orderDao.getTotalCost();
   }
 }
