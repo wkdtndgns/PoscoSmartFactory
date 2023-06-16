@@ -35,12 +35,11 @@ $(document).ready(function () {
           // 서버로부터 받은 응답 데이터를 처리하는 코드
           $.each(aChecked, function (iKey, aRow) {
             $(this).prop('checked', false);
-            $(this).prop('disabled', true)
+            $(this).prop('disabled', true);
+            $(this).closest('tr').find('.tdStatus').text('완료');
           });
 
           alert("성공적으로 처리되었습니다. ")
-
-          location.reload();
           // 응답 데이터를 활용하여 필요한 작업 수행
         },
         error: function (xhr, status, error) {

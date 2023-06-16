@@ -37,7 +37,8 @@ $(document).ready(function () {
         success: function (response) {
           $.each(aChecked, function (iKey, aRow) {
             $(this).prop('checked',false);
-            $(this).prop('disabled',true)
+            $(this).prop('disabled',true);
+            $(this).closest('tr').find('.tdStatus').text('완료');
           });
 
           // 서버로부터 받은 응답 데이터를 처리하는 코드

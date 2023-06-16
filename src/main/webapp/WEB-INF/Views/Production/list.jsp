@@ -77,7 +77,7 @@
                   </td>
                   <td><%= p.getExpectedCompletionDate() %>
                   </td>
-                  <td><%= ProductionStatus.fromInt(p.getStatus()) %>
+                  <td class="tdStatus"><%= ProductionStatus.fromInt(p.getStatus()) %>
                   </td>
                 </tr>
                 <% } %>

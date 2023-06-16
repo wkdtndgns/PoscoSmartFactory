@@ -80,7 +80,7 @@
                   </td>
                   <td><%= o.getExpectedDeliveryDate() %>
                   </td>
-                  <td><%= OrderStatus.fromInt(o.getStatus()) %>
+                  <td class="tdStatus"><%= OrderStatus.fromInt(o.getStatus()) %>
                   </td>
                 </tr>
                 <% } %>
