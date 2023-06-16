@@ -10,7 +10,7 @@ public class DatabaseConfig {
     protected DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://192.168.0.93:3306/SmartFactory");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/SmartFactory");
         dataSource.setUsername("root");
         dataSource.setPassword("1234");
         return dataSource;
