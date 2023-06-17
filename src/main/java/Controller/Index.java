@@ -11,6 +11,6 @@ public class Index {
 
   @RequestMapping("/")
   public String index() {
-    return "index"; // View 갈려고 시도합니다.
+    return "redirect:/User/Login"; // View 갈려고 시도합니다.
   }
 }

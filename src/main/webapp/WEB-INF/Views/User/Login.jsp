@@ -49,8 +49,8 @@
         $(document).ready(function() {
             // 버튼 클릭 시 아이디와 비밀번호 자동 입력
             $("#autoFillBtn").click(function() {
-                $("#username").val("ssg");
-                $("#password").val("1234");
+                $("#username").val("posco");
+                $("#password").val("password");
             });
 
             $("#companyMemberBtn").click(function() {
