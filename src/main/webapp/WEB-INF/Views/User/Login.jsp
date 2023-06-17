@@ -1,5 +1,8 @@
 <%@ page import="Dao.Production, java.util.List, Comm.ProductionStatus" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    session.removeAttribute("username");
+%>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
@@ -52,6 +55,11 @@
                 $("#username").val("posco");
                 $("#password").val("password");
             });
+
+            $("#companyMemberBtn").click(function() {
+                $("#username").val("ssg");
+                $("#password").val("1234");
+            });
         });
     </script>
 </head>
@@ -83,7 +91,8 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary">로그인</button>
                                 </form>
-                                    <button type="button" id="autoFillBtn" class="btn btn-secondary">자동 입력</button>
+                                <button type="button" id="autoFillBtn" class="btn btn-secondary">자동 입력</button>
+                                <button type="button" id="companyMemberBtn" class="btn btn-secondary">기업 회원</button>
                                 <% if (request.getAttribute("errorMessage") != null) { %>
                                 <script>
                                     $(document).ready(function() {
@@ -94,7 +103,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
             <!-- /.container-fluid -->

@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views/User/FacRegister.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views/User" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views/include/companysidebar.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views/include" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views/include/toolbar.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/Views/include" />
       </map>
     </option>
   </component>

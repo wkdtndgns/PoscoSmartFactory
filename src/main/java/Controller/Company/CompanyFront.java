@@ -35,4 +35,9 @@ public class CompanyFront {
     ModelAndView mv = new ModelAndView("Company/companyhome");
     return mv;
   }
+  @RequestMapping("/companyorder")
+  public ModelAndView companyorder() {
+    ModelAndView mv = new ModelAndView("Company/companyorder");
+    return mv;
+  }
 }

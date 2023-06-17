@@ -68,4 +68,20 @@ public class FactoryDao {
 
     return jdbcTemplate.queryForObject(sql, FACTORY_PRODUCTION_ROW_MAPPER);
   }
+
+  public int getProductionByIdAndTemp(int id, int temp) {
+    String sql = String.format("SELECT %s FROM t_factories WHERE id = ?",
+            (temp == 1) ? "cathode_production" : "anode_production");
+
+    return jdbcTemplate.queryForObject(sql, new Object[]{id}, Integer.class);
+  }
+  public void updateProductionByIdAndTemp(int factoryId, int temp, int orderQty) {
+    String columnName = (temp == 1) ? "cathode_production" : "anode_production";
+    String sql = String.format("UPDATE %s SET %s = %s - ? WHERE id = ?", FACTORYTABLE, columnName, columnName);
+    System.out.println(orderQty);
+    System.out.println(columnName);
+    jdbcTemplate.update(sql, orderQty, factoryId);
+  }
+
+
 }

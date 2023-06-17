@@ -125,4 +125,8 @@ public class OrderDao {
     String sql = "SELECT SUM(qty * purchase_price) FROM t_orders";
     return jdbcTemplate.queryForObject(sql, Float.class);
   }
+    public void updateStatusById(int orderId, int newStatus) {
+        String sql = String.format("UPDATE %s SET status = ? WHERE id = ?", ORDERTABLE);
+        jdbcTemplate.update(sql, newStatus, orderId);
+    }
 }
