@@ -4,7 +4,7 @@
 <script>
   $(document).ready(function () {
     var menuData = [
-      {text: "기업 평가", href: "/User/FacRegister"},
+      {text: "Home", href: "/company/companyhome"},
       {text: "양극재 주문", href: "/order/cathodorder"},
       {text: "음극재 주문", href: "/order/anodeorder"},
       {text: "문의하기", href: "https://open.kakao.com/o/s7D4s6pf"},

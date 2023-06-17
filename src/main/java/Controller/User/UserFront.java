@@ -55,8 +55,6 @@ public class UserFront {
         // 아이디와 패스워드를 이용한 로그인 처리 로직 작성
 
         UserDao userDao = new UserDao();
-        System.out.println("아이디: " + id);
-        System.out.println("패스워드: " + password);
         UserService userService = new UserService(userDao);
         boolean loginSuccess = userService.login(id, password);
 

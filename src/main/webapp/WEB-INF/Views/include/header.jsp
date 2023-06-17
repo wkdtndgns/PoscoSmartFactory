@@ -25,8 +25,6 @@
     }
 
     if (nameUser == null) {
-        System.out.println("세션이 없어요");
-        System.out.println(contextPath+"체크해줘");
         // 세션이 없는 경우 로그인 페이지로 매핑
         response.sendRedirect(contextPath + "/User/Login");
     }

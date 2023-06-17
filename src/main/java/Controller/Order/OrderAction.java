@@ -5,7 +5,10 @@ import Dao.CompanyDao;
 import Dao.Order;
 import Service.OrderService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -30,7 +33,7 @@ public class OrderAction {
 
 
     @PostMapping("orderAction")
-    public boolean orderAction(HttpServletRequest request) {
+    public ModelAndView orderAction(HttpServletRequest request,  Model model) {
         String totalPrice = request.getParameter("totalPrice");
         String quantityNegative = request.getParameter("quantityNegative");
         String factoryOption = request.getParameter("factoryOption");
@@ -57,16 +60,17 @@ public class OrderAction {
 
 // 소숫점 이전의 값 가져오기
         String result = String.valueOf(integerValue);
-        System.out.println(result);
 
         Order order = new Order(comapny_id,fac_id,marterial_id,q_Negative,integerValue,startDate,expectedDeliveryDate,10);
         OrderService orderService = new OrderService();
-        orderService.registerOrder(order);
+        int stockOrder= orderService.registerOrder(order);
+//1이면 모델 만들어서
+        model.addAttribute("stockOrder", stockOrder);
 
-        return true;
+        return new ModelAndView("Order/ordercomplete");
     }
     @PostMapping("orderActionPositive")
-    public boolean orderActionPositive(HttpServletRequest request) {
+    public ModelAndView orderActionPositive(HttpServletRequest request, Model model) {
         String totalPrice = request.getParameter("totalPrice");
         String quantityPositive = request.getParameter("quantityPositive");
         String factoryOption = request.getParameter("factoryOption");
@@ -92,12 +96,13 @@ public class OrderAction {
 
 // 소숫점 이전의 값 가져오기
         String result = String.valueOf(integerValue);
-        System.out.println(result);
 
         Order order = new Order(comapny_id,fac_id,marterial_id,q_Positive,integerValue,startDate,expectedDeliveryDate,10);
         OrderService orderService = new OrderService();
-        orderService.registerOrder(order);
+        int stockOrder=orderService.registerOrder(order);
+        //stockOder 1이면 바로 배송시작 0이면 제조 기다려야함.
+        model.addAttribute("stockOrder", stockOrder);
 
-        return true;
+        return new ModelAndView("Order/ordercomplete");
     }
 }

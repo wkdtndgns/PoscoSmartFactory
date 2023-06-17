@@ -13,7 +13,6 @@ public class Test {
 
   @RequestMapping("/t1")
   public String func01() {
-    System.out.println("func01 call");
     CompanyService companyService = new CompanyService();
     List<Company> companies = companyService.getList();
     for (Company company : companies) {

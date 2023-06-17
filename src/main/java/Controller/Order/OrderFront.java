@@ -8,6 +8,7 @@ import Service.ProductionService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.jsoup.Jsoup;
@@ -32,6 +33,15 @@ public class OrderFront {
     mv.addObject("status", status.orElse(""));
     return mv;
   }
+  @RequestMapping("/ordercomplete")
+  public String orderComplete(Model model) {
+    int stockOrder = (int) model.getAttribute("stockOrder");
+
+    // stockOrder 값을 필요에 따라 처리
+    ModelAndView modelAndView = new ModelAndView("ordercomplete");
+    modelAndView.addObject("stockOrder", stockOrder);
+    return "ordercomplete";
+  }
   @RequestMapping("/cathodorder")
   public ModelAndView cathodorder() throws IOException {
 
@@ -42,13 +52,11 @@ public class OrderFront {
     String text = tdElement.text();
     text = text.replace(",", "").trim();
     double cathoprice = Double.parseDouble(text);
-    System.out.println(cathoprice);
 //음극재
     String newurl = "https://kr.investing.com/equities/shanghai-putailai-new-energy-commentary";
     Document newdoc = Jsoup.connect(newurl).get();
     Element priceElement = newdoc.selectFirst("span[data-test='instrument-price-last']");
     String anodeprice = priceElement.text();
-    System.out.println("가격: " + anodeprice);
     double anovalue = Double.parseDouble(anodeprice);
 
 
@@ -59,7 +67,6 @@ public class OrderFront {
     String exchangeRate = valueElement.text();
     exchangeRate = exchangeRate.replace(",", "");
     double rate = Double.parseDouble(exchangeRate);
-    System.out.println(rate+ "환율 체크" );
     anovalue= anovalue*rate;
 
     ModelAndView mv = new ModelAndView("Order/cathodorder");
@@ -84,7 +91,6 @@ public class OrderFront {
     Document newdoc = Jsoup.connect(newurl).get();
     Element priceElement = newdoc.selectFirst("span[data-test='instrument-price-last']");
     String anodeprice = priceElement.text();
-    System.out.println("가격: " + anodeprice);
     double anovalue = Double.parseDouble(anodeprice);
 
 
