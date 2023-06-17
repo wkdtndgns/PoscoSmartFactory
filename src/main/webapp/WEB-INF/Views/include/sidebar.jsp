@@ -3,7 +3,7 @@
 <script>
   $(document).ready(function () {
     var menuData = [
-      {text: "Home", href: "/"},
+      {text: "Home", href: "/home"},
       {text: "소개", href: "/introduce/list"},
       {text: "공장관리", href: "/factory/list"},
       {text: "기업관리", href: "/company/list"},

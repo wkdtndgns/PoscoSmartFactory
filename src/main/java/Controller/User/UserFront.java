@@ -64,7 +64,7 @@ public class UserFront {
             // 관리자 로그인 성공 시
             session.setAttribute("username", id);
             if(id.equals("posco") && password.equals("password")){
-                ModelAndView modelAndView = new ModelAndView("redirect:/factory/list");
+                ModelAndView modelAndView = new ModelAndView("redirect:/home");
                 return modelAndView;
             }else {
                 //기업로그인 성공

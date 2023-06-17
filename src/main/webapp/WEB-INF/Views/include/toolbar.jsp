@@ -28,7 +28,7 @@
 		ImageURLUser = (String) nSession.getAttribute("imageURL");
 	}
 
-	String uName = (nameUser != null && nameUser.equals("posco")) ? "주문 관리자" : "기업회1원:" + nameUser;
+	String uName = (nameUser != null && nameUser.equals("posco")) ? "주문 관리자" : "기업회원:" + nameUser;
 	String uImageURL = ImageURLUser != null ? ImageURLUser : contextPath + "/img/undraw_profile.svg";
 	if (nameUser == null) {
 		System.out.println("세션이 없어요");

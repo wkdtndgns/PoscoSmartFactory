@@ -23,14 +23,12 @@
         <!-- Main Content -->
         <div id="content">
             <jsp:include page="../include/toolbar.jsp"/>
-            <!-- Begin Page Content -->
-            <div class="container-fluid">
-
-                <!-- DataTales Example -->
-
-
-            </div>
-            <!-- /.container-fluid -->
+            <!-- Begin Page Content 수정은 요기서지롱 -->
+            <img src="<%=request.getContextPath()%>/img/1.png" width="100%" height="1000px" />
+            <img src="<%=request.getContextPath()%>/img/2.png" width="100%" height="1000px" />
+            <img src="<%=request.getContextPath()%>/img/4.png" width="100%" height="1000px" />
+            <%--            <img src="<%=request.getContextPath()%>/img/5.png" width="100%" height="1000px" />--%>
+            <%--            <img src="<%=request.getContextPath()%>/img/6.png" width="100%" height="1000px" />--%>
         </div>
         <jsp:include page="../include/footer.jsp"/>
     </div>

@@ -1,5 +1,8 @@
 <%@ page import="Dao.Production, java.util.List, Comm.ProductionStatus" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    session.removeAttribute("username");
+%>
 <!DOCTYPE html>
 <html lang="kr">
 <head>
