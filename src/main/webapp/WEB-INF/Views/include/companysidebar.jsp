@@ -5,6 +5,7 @@
   $(document).ready(function () {
     var menuData = [
       {text: "Home", href: "/company/companyhome"},
+      {text: "주문 내역", href: "/company/ordercheck"},
       {text: "양극재 주문", href: "/order/cathodorder"},
       {text: "음극재 주문", href: "/order/anodeorder"},
       {text: "문의하기", href: "https://open.kakao.com/o/s7D4s6pf"},
