@@ -21,7 +21,7 @@ $(document).ready(function() {
       <div class="col-lg-10 mb-4">
             <div class="card bg-success text-white shadow">
               <div class="card-body">
-                ${data.factoryName}에서 ${data.companyName}기업의 주문 ${data.id} 생산을 완료했습니다. 
+                ${data.factoryName}에서 ${data.companyName}기업의 주문번호 ${data.id}의 생산을 완료했습니다. 
                 <div class="text-white-50 small">success</div>
               </div>
             </div>

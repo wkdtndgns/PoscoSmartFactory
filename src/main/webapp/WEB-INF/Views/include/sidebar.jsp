@@ -12,6 +12,7 @@
       {text: "주문관리", href: "/order/list"},
       {text: "생산관리", href: "/production/list"},
       {text: "로그인 임시", href: "/User/Login"},
+      {text: "로그관리", href: "/logs"},
     ];
 
     var $menu = $("#accordionSidebar");

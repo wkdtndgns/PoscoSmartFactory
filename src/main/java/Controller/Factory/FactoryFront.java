@@ -21,11 +21,6 @@ public class FactoryFront {
   public ModelAndView list() {
     ModelAndView mv = new ModelAndView("Factory/list");
     List<Factory> factories = factoryService.getList();
-    for (Factory factory : factories) {
-      System.out.println(factory.getName());
-    }
-
-
     mv.addObject("factories", factories);
     return mv; // Returns the view
   }
