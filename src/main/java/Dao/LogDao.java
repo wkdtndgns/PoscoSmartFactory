@@ -28,7 +28,7 @@ public class LogDao {
 
   public List<Document> findAll(){
     MongoCollection<Document> collection = mongoDatabase.getCollection("log");
-    FindIterable<Document> docs = collection.find().sort(new Document("timestamp", -1));;
+    FindIterable<Document> docs = collection.find().sort(new Document("timestamp", -1));
     List<Document> documents = new ArrayList<>();
     for (Document doc : docs) {
       if(doc.get("message") != null){
