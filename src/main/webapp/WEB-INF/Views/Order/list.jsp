@@ -21,7 +21,7 @@
         <!-- DataTales Example -->
         <input type="hidden" id="hidPrevStatus" value="<%= request.getAttribute("status")%>">
         <div class="card shadow mb-4">
-          <form id="frm" method="get" action="/production/list">
+          <form id="frm" method="get" action="/order/list">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary" style="display: contents">주문 목록</h6>
               <div style="float: right; display: flex;">
