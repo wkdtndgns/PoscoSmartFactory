@@ -1,5 +1,6 @@
 package Dao;
 
+import Controller.Factory.Vo.FactoryProduction;
 import Util.DatabaseUtil;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -27,6 +28,11 @@ public class FactoryDao {
       rs.getTimestamp("created_ts").toLocalDateTime()
   );
 
+  private static final RowMapper<FactoryProduction> FACTORY_PRODUCTION_ROW_MAPPER = (rs, rowNum) -> new FactoryProduction(
+      rs.getInt("totalAnodeProduction"),
+      rs.getInt("totalCathodeProduction")
+  );
+
   public List<Factory> findAll() {
     String sql = String.format("SELECT * from %s", FACTORYTABLE);
     return jdbcTemplate.query(sql, FACTORY_ROW_MAPPER);
@@ -43,5 +49,23 @@ public class FactoryDao {
   public void updateAnodeProduction(int factoryId, int anodeProduction) {
     String sql = String.format("UPDATE %s SET anode_production = ? WHERE id = ?", FACTORYTABLE);
     jdbcTemplate.update(sql, anodeProduction, factoryId);
+  }
+
+  public List<FactoryProduction> getFactoryProductionById() {
+    String sql = "SELECT id,name, SUM(cathode_production) as totalCathodeProduction, SUM(anode_production) as totalAnodeProduction FROM t_factories GROUP BY id";
+
+    return jdbcTemplate.query(sql, (resultSet, i) -> {
+      String name = resultSet.getString("name");
+      int totalCathodeProduction = resultSet.getInt("totalCathodeProduction");
+      int totalAnodeProduction = resultSet.getInt("totalAnodeProduction");
+
+      return new FactoryProduction(name, totalCathodeProduction, totalAnodeProduction);
+    });
+  }
+
+  public FactoryProduction getFactoryProduction() {
+    String sql = "SELECT SUM(cathode_production) as totalCathodeProduction, SUM(anode_production) as totalAnodeProduction FROM t_factories";
+
+    return jdbcTemplate.queryForObject(sql, FACTORY_PRODUCTION_ROW_MAPPER);
   }
 }

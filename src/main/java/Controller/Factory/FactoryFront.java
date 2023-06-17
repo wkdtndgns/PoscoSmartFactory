@@ -29,4 +29,9 @@ public class FactoryFront {
     mv.addObject("factories", factories);
     return mv; // Returns the view
   }
+
+  @RequestMapping("/production")
+  public String production(){
+    return "Factory/production";
+  }
 }
