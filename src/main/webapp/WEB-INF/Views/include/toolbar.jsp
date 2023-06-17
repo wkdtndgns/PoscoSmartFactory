@@ -39,12 +39,10 @@
 
 	// 로그아웃 처리
 	String logoutURL = contextPath + "/User/Login";
-	if (nSession != null) {
-		nSession.invalidate(); // 세션 초기화
-	}
+
 %>
 
-<!-- Topbar -->
+
 <!-- Topbar -->
 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 	<button id="sidebarToggleTop" class="btn btn-link rounded-circle">
@@ -64,6 +62,5 @@
 		</li>
 	</ul>
 </nav>
-<!-- End of Topbar -->
 
 <!-- End of Topbar -->

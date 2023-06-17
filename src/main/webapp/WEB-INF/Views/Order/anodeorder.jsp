@@ -1,6 +1,8 @@
 <%@ page import="Dao.Company, java.util.List, Comm.CompanyCategory" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-
+<%
+    session.removeAttribute("username");
+%>
 <!DOCTYPE html>
 <html lang="kr">
 
@@ -46,7 +48,7 @@
                 <div class="row">
                     <div class="col-lg-12 mb-4">
                         <div class="card shadow">
-                            < class="card-body">
+                            <div class="card-body">
                                 <div class="font-weight-bold">실시간 환율:</div>
                                 <div id="exchangeRate" class="font-weight-bold">${rate}</div>
                             </div>
