@@ -1,13 +1,7 @@
 <%@ page import="Dao.Production, java.util.List, Comm.ProductionStatus" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String nameUser = (String) session.getAttribute("username");
-    if (nameUser == null) {
-        response.sendRedirect(request.getContextPath() + "/User/Login");
-        return; // 리다이렉트 후에 코드 진행 중단
-    }
-%>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -19,7 +13,7 @@
 <body id="page-top">
 <!-- Page Wrapper -->
 <div id="wrapper">
-    <jsp:include page="../include/sidebar.jsp" />
+    <jsp:include page="../include/loginsidebar.jsp" />
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
         <!-- Main Content -->
@@ -28,7 +22,7 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 <!-- Page Heading -->
-                <h1 class="h3 mb-4 text-gray-800">공장 아이디 발급</h1>
+                <h1 class="h3 mb-4 text-gray-800">공장 아이디 발급(안쓰는 기능)</h1>
                 <div class="row justify-content-center">
                     <div class="col-md-6">
                         <form id="factoryForm">

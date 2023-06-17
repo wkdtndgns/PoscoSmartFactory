@@ -40,4 +40,10 @@ public class CompanyFront {
     ModelAndView mv = new ModelAndView("Company/companyorder");
     return mv;
   }
+
+  @RequestMapping("/ordercheck")
+  public ModelAndView ordercheck() {
+    ModelAndView mv = new ModelAndView("Company/ordercheck");
+    return mv;
+  }
 }
