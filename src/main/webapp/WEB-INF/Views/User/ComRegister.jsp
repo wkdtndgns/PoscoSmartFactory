@@ -79,11 +79,11 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6">
                         <div class="login-form">
-                            <h2>회사 아이디 발급</h2>
+                            <h2>기업 아이디 발급</h2>
                             <form id="companyForm">
                                 <div class="form-group">
-                                    <label for="companyName">회사 이름</label>
-                                    <input type="text" class="form-control" id="companyName" placeholder="회사 이름을 입력하세요">
+                                    <label for="companyName">기업 이름</label>
+                                    <input type="text" class="form-control" id="companyName" placeholder="기업 이름을 입력하세요">
                                 </div>
                                 <div class="form-group">
                                     <label for="category">기업 분류</label>
@@ -113,7 +113,7 @@
                         <div class="alert alert-success" role="alert">
                             <h4 class="alert-heading">아이디 발급 완료!</h4>
                             <p>
-                                회사 이름: <span id="generatedCompanyName"></span>
+                                기업 이름: <span id="generatedCompanyName"></span>
                                 <br>
                                 발급된 아이디: <span id="generatedId"></span>
                                 <br>

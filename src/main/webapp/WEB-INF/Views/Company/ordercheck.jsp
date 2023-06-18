@@ -1,4 +1,8 @@
 <%@ page import="Dao.Company, java.util.List, Comm.CompanyCategory" %>
+<%@ page import="Dao.Order" %>
+<%@ page import="Comm.OrderStatus" %>
+<%@ page import="Dao.OrderDao" %>
+<%@ page import="Dao.CompanyDao" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
   String nameUser = (String) session.getAttribute("username");
@@ -12,7 +16,8 @@
 <html lang="kr">
 <head>
   <jsp:include page="../include/header.jsp"/>
-  <script src="<%=request.getContextPath()%>/js/company/list.js"></script>
+  <script src="<%=request.getContextPath()%>/js/order/list.js"></script>
+  <script src="<%=request.getContextPath()%>/js/order/comm.js"></script>
 </head>
 <body id="page-top">
 <!-- Page Wrapper -->
@@ -24,7 +29,73 @@
     <div id="content">
       <jsp:include page="../include/toolbar.jsp"/>
 
-      ordercheck 구현
+      <div class="container-fluid">
+        <!-- DataTales Example -->
+        <input type="hidden" id="hidPrevStatus" value="<%= request.getAttribute("status")%>">
+        <div class="card shadow mb-4">
+          <form id="frm" method="get" action="/company/ordercheck">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary" style="display: contents">주문 목록</h6>
+              <div style="float: right; display: flex;">
+
+
+              </div>
+            </div>
+          </form>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                <tr>
+                  <th>주문번호</th>
+                  <th>회사</th>
+                  <th>공장</th>
+                  <th>재료</th>
+                  <th>수량</th>
+                  <th>가격</th>
+                  <th>주문일</th>
+                  <th>주문 예상일</th>
+                  <th>주문 상태</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%
+                  OrderDao orderDao= new OrderDao();
+                  CompanyDao companyDao=new CompanyDao();
+
+                  int num=companyDao.findCompanyIdByName(nameUser);
+                  List<Order> orderList=orderDao.findAllByCompanyId(num);
+                  for (Order o : orderList) {
+
+                %>
+                <tr>
+                  <td><%= o.getId()%>
+                  </td>
+                  <td><%= o.getCompanyName() %>
+                  </td>
+                  <td><%= o.getFactoryName() %>
+                  </td>
+                  <td><%= o.getMaterialName() %>
+                  </td>
+                  <td><%= o.getQty() %>
+                  </td>
+                  <td><%= o.getPurchasePriceToString() %>
+                  </td>
+                  <td><%= o.getOrderDate() %>
+                  </td>
+                  <td><%= o.getExpectedDeliveryDate() %>
+                  </td>
+                  <td class="tdStatus"><%= OrderStatus.fromInt(o.getStatus()) %>
+                  </td>
+                </tr>
+                <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
     <jsp:include page="../include/footer.jsp"/>
   </div>

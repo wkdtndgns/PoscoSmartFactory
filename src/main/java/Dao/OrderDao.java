@@ -129,4 +129,16 @@ public class OrderDao {
         String sql = String.format("UPDATE %s SET status = ? WHERE id = ?", ORDERTABLE);
         jdbcTemplate.update(sql, newStatus, orderId);
     }
+    public List<Order> findAllByCompanyId(int companyId) {
+        String sql = String.format("select tord.*, tf.name as factory_name, tc.name as company_name, tm.name as material_name\n"
+                + "from t_orders as tord\n"
+                + "         left join t_factories tf on tord.factory_id = tf.id\n"
+                + "         left join t_materials tm on tord.material_id = tm.id\n"
+                + "         left join t_companies tc on tord.company_id = tc.id\n"
+                + " where tord.company_id = %d\n"
+                + " order by tord.id desc ", companyId);
+
+        return jdbcTemplate.query(sql, ORDER_ROW_MAPPER);
+    }
+
 }

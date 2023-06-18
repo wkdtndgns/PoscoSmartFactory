@@ -54,7 +54,7 @@
                         <div class="card shadow">
                             <div class="card-body">
                                 <div class="font-weight-bold">실시간 환율:</div>
-                                <div id="exchangeRate" class="font-weight-bold">${rate}</div>
+                                <div id="exchangeRate" class="font-weight-bold">${rate}</div>(원)
                             </div>
                         </div>
                     </div>
