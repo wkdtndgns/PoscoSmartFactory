@@ -105,7 +105,7 @@ public class UserFront {
 // T_company 값 새로 insert하기
         CompanyDao companyDao = new CompanyDao();
         companyDao.insertCompany(companyName,intCategory,companyIntro,companyLocation);
-        ModelAndView mv = new ModelAndView("User/ComRegisterAction");
+        ModelAndView mv = new ModelAndView("User/Login");
         return mv;
     }
 
