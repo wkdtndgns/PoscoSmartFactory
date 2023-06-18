@@ -3,7 +3,6 @@
 <script>
   $(document).ready(function () {
     var menuData = [
-      {text: "공장 등록", href: "/User/FacRegister"},
       {text: "회사 등록", href: "/User/ComRegister"},
       {text: "문의하기", href: "https://open.kakao.com/o/s7D4s6pf"},
     ];

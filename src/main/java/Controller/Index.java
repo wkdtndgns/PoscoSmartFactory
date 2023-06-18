@@ -1,7 +1,6 @@
 package Controller;
-
-import Dao.Company;
 import Dao.Factory;
+import Dao.Company;
 import Service.CompanyService;
 import Service.FactoryService;
 import Service.OrderService;
@@ -23,11 +22,20 @@ public class Index {
   }
 
   @RequestMapping("/")
-  public ModelAndView index() {
-    ModelAndView mv = new ModelAndView("index");
-    mv.addObject("totalCost", orderService.getTotalCost());
-    mv.addObject("factoryProduction", factoryService.getFactoryProduction());
-    mv.addObject("factoryProductionById", factoryService.getFactoryProductionById());
-    return mv; // View 갈려고 시도합니다.
+  public String first() {
+    return "redirect:/User/Login"; // View 갈려고 시도합니다.
   }
+
+  /*
+
+     */
+    @RequestMapping("/home")
+    public ModelAndView index() {
+      ModelAndView mv = new ModelAndView("index");
+      mv.addObject("totalCost", orderService.getTotalCost());
+      mv.addObject("factoryProduction", factoryService.getFactoryProduction());
+      mv.addObject("factoryProductionById", factoryService.getFactoryProductionById());
+      return mv; // View 갈려고 시도합니다.
+    }
+
 }

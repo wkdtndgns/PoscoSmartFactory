@@ -1,17 +1,14 @@
 <!-- Sidebar -->
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+
 <script>
   $(document).ready(function () {
     var menuData = [
-      {text: "Home", href: "/home"},
-      {text: "소개", href: "/introduce/list"},
-      {text: "공장관리", href: "/factory/list"},
-      {text: "기업관리", href: "/company/list"},
-      {text: "재료관리", href: "/material/list"},
-      {text: "비율관리", href: "/RatioM/list"},
-      {text: "주문관리", href: "/order/list"},
-      {text: "생산관리", href: "/production/list"},
-      {text: "로그관리", href: "/logs"},
+      {text: "Home", href: "/company/companyhome"},
+      {text: "주문 내역", href: "/company/ordercheck"},
+      {text: "양극재 주문", href: "/order/cathodorder"},
+      {text: "음극재 주문", href: "/order/anodeorder"},
+      {text: "문의하기", href: "https://open.kakao.com/o/s7D4s6pf"},
     ];
 
     var $menu = $("#accordionSidebar");

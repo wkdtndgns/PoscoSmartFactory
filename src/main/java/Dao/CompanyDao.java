@@ -30,4 +30,13 @@ public class CompanyDao {
     String sql = String.format("SELECT * from %s", COMPTABLE);
     return jdbcTemplate.query(sql, COMPANY_ROW_MAPPER);
   }
+  public void insertCompany(String name, int category, String introduction, String location) {
+    String sql = "INSERT INTO t_companies (name, category, introduction, location) VALUES (?, ?, ?, ?)";
+    jdbcTemplate.update(sql, name, category, introduction, location);
+  }
+  public int findCompanyIdByName(String name) {
+    String sql = "SELECT id FROM t_companies WHERE name = ?";
+    return jdbcTemplate.queryForObject(sql, Integer.class, name);
+  }
+
 }
