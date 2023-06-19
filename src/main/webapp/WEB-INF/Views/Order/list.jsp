@@ -40,7 +40,7 @@
                     <option value="30">완료</option>
                   </select>
                 </div>
-                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="btnOrderStatus">
+                <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" id="btnOrderStatus" style="line-height:normal;">
                   <i class="fas fa-download fa-sm text-white-50"></i> 완료
                 </a>
               </div>

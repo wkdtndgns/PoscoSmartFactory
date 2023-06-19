@@ -34,9 +34,16 @@ public class CompanyDao {
     String sql = "INSERT INTO t_companies (name, category, introduction, location) VALUES (?, ?, ?, ?)";
     jdbcTemplate.update(sql, name, category, introduction, location);
   }
-  public int findCompanyIdByName(String name) {
+  public Integer findCompanyIdByName(String name) {
     String sql = "SELECT id FROM t_companies WHERE name = ?";
-    return jdbcTemplate.queryForObject(sql, Integer.class, name);
-  }
+    List<Integer> ids = jdbcTemplate.query(sql, new Object[] { name }, (rs, rowNum) -> rs.getInt("id"));
 
+    Integer id = null;
+    if(!ids.isEmpty()) {
+      id = ids.get(0);
+    }
+
+    System.out.println(id);
+    return id;
+  }
 }

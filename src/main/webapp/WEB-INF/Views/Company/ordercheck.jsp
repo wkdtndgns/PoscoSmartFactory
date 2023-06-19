@@ -60,12 +60,14 @@
                 </thead>
                 <tbody>
                 <%
-                  OrderDao orderDao= new OrderDao();
-                  CompanyDao companyDao=new CompanyDao();
+                  OrderDao orderDao = new OrderDao();
+                  CompanyDao companyDao = new CompanyDao();
 
-                  int num=companyDao.findCompanyIdByName(nameUser);
-                  List<Order> orderList=orderDao.findAllByCompanyId(num);
-                  for (Order o : orderList) {
+                  Integer num = companyDao.findCompanyIdByName(nameUser);
+
+                  if (num != null) {
+                    List<Order> orderList = orderDao.findAllByCompanyId(num);
+                    for (Order o : orderList) {
 
                 %>
                 <tr>
@@ -88,7 +90,8 @@
                   <td class="tdStatus"><%= OrderStatus.fromInt(o.getStatus()) %>
                   </td>
                 </tr>
-                <% } %>
+                <% }
+                }%>
                 </tbody>
               </table>
             </div>
