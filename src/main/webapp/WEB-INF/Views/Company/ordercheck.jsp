@@ -62,13 +62,10 @@
                 <%
                   OrderDao orderDao = new OrderDao();
                   CompanyDao companyDao = new CompanyDao();
-
                   Integer num = companyDao.findCompanyIdByName(nameUser);
-
                   if (num != null) {
                     List<Order> orderList = orderDao.findAllByCompanyId(num);
                     for (Order o : orderList) {
-
                 %>
                 <tr>
                   <td><%= o.getId()%>
